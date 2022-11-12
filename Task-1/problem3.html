@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>problem3</title>
+
+    <style>
+            body .container{
+            width: 60%;
+            height: 60%;
+            margin-top: 20%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .container .conta{
+            display: inline-flex;
+            justify-content: space-between;
+            margin: 5px;
+            position: relative;
+            text-align: center;
+        }
+       
+        .conta input{
+        width: 100%;
+        padding: 0 5px;
+        height: 40px;
+        font-size: 16px;
+        border: none;
+        background: none;
+        outline: none;
+    }
+
+    .conta label{
+     position: absolute;
+     top: 50%;
+     left: 5px;
+     color: #adadad;
+     transform: translateY(-50%);
+     font-size: 16px;
+     pointer-events: none;
+     transition: .5s;
+    }
+    .conta input:focus ~ label,
+    .conta input:valid ~ label{
+        top: -5px;
+        color: #2691d9;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="conta">
+<input type="text" required id="count" >
+<label>Enter count of list</label>
+        </div>
+        <div class="conta">
+<input type="text" required id="num" >
+<label>Enter numbers</label>
+        </div>
+
+        <button id="btn">check</button>
+
+        <div id="result"></div>
+    </div>
+
+
+    <script>
+       
+        var btn = document.getElementById("btn");
+        
+
+        btn.onclick=function(){
+ 
+ let numc = document.getElementById("count").value;
+        let nums = document.getElementById("num").value;
+        let result = document.getElementById("result");
+        var numArr = nums.split(' ');
+
+        //By for loop.....
+ var sum=0;
+        for(var i=0;i<numc;i++){
+            sum= sum + Number(numArr[i]);
+        }
+
+
+        //while loop...........
+        var j = 0;
+        var sumw =0;
+        while(j<numc){
+            sumw = sumw + Number(numArr[j]);
+            j++;
+        }
+
+        console.log(sumw);
+
+        //recursion.......
+     
+        var array_sum = function(arr,n) {
+ if(n==0){
+    return 0;
+ }else{
+    var sumr = Number(arr[n-1]) + array_sum(arr,n-1) ;
+    return sumr;
+ }
+};
+console.log(numArr);
+
+var sumsion = array_sum(numArr,numc);
+console.log(array_sum(numArr,numc));
+
+result.innerHTML= sum +"<br>"+sumw+"<br>"+sumsion;
+        }
+       
+        
+        </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>common</title>
+    <style>
+
+        .container{
+            width: 85%;
+            margin: auto;
+        }
+      
+            input{
+            padding: 0 5px;
+        height: 30px;
+        font-size: 16px;
+        }
+        button{
+        padding: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 6px;
+    }
+
+    p{
+        font-size: 19px;
+    }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="conta">
+            <label>num1</label>
+            <input type="number" id="num1">
+        </div>
+        <br>
+        <div class="conta">
+            <label>num2</label>
+            <input type="number" id="num2">
+        </div>
+        <br><br>
+         <button id="common">get common</button>
+        <p id="result"></p>
+      
+    </div>
+
+    <script>
+        var btn = document.getElementById("common");
+        btn.onclick=function(){
+            var n1 = document.getElementById("num1").value;
+        var n2 = document.getElementById("num2").value;
+        var res = document.getElementById("result");
+       
+
+        while(n2){
+            var t = n2;
+            n2 = n1 % n2;
+            n1 = t;
+        }
+
+        res.innerHTML=n1;
+
+
+        }
+       
+    </script>
+</body>
+</html>

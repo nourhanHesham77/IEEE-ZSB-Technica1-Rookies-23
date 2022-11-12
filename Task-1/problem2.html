@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>factorial</title>
+    <style>
+        input{
+            padding: 0 5px;
+        height: 30px;
+        font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="conta">
+        <label>put a number</label>
+        <input type="number" required id="inp">
+        <!-- <button type="submit" id="fact">Get factorial</button> -->
+        <p id="result"></p>
+    </div>
+    
+
+    <script>
+       var btn = document.getElementById("fact");
+       var inp =  document.getElementById("inp");
+       inp.onkeyup=function(){
+        var n =  document.getElementById("inp").value;
+      
+        var i;
+        let num = 1;
+            for(i = n; i>=1 ;i--){
+                num = num * i;
+            }
+          
+        
+        document.getElementById("result").innerHTML="The factorial of the number = "+num;
+       }
+    </script>
+</body>
+</html>

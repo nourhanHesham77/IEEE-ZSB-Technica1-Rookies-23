@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>problem1</title>
+    <style>
+ body{
+            padding: 0;
+            width: 90%;
+        }
+
+        body .container{
+            width: 80%;
+            height: 60%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .container .conta,#result{
+            /* display: inline-flex; */
+            display: block;
+            justify-content: space-between;
+            margin: 5px;
+            text-align: center;
+        }
+
+        .conta label{
+            margin: 5px;
+        color: green;
+        font-size: 20px;
+
+    }
+
+        .conta input{
+        padding: 0 5px;
+        height: 30px;
+        font-size: 16px;
+       
+    }
+
+    button{
+        padding: 6px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .container #result #res1{
+        font-size: 19px;
+    }
+
+
+
+  
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="conta">
+        <label>Enter length</label>
+        
+        <input type="number" id="reclength">
+       
+    </div>
+    <div class="conta">
+        <label>Enter width</label>
+        <input type="number" id="recwidth">
+        
+    </div>
+    
+    <br><br>
+    <div id="result">
+    <button id="chk">Get Area & Perimeter</button>
+    <p id="res1"></p>
+</div>
+</div>
+
+
+<script>
+   
+    //get area & perimeter...
+
+    var btna = document.getElementById("chk");
+
+    btna.addEventListener("click",() => {
+
+var reclength =document.getElementById("reclength").value;
+var recwidth =document.getElementById("recwidth").value;
+var result =document.getElementById("res1");
+
+       var area;
+          area = reclength * recwidth;
+
+        var perimeter;
+          perimeter = 2*reclength + 2*recwidth;
+
+ result.innerHTML="The area of rectangle = "+area+"<br> The perimeter = "+perimeter;
+
+    })
+
+  
+</script>
+</body>
+</html>

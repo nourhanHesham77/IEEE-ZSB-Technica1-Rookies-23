@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .container{
+            width: 80%;
+            margin: auto;
+            padding: 10px;
+        }
+
+        .cont label{
+          font-weight: bold;
+        }
+
+.cont input{
+        padding: 0 5px;
+        height: 40px;
+        font-size: 16px;
+    }
+.result p{
+    font-size: 19px;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="cont">
+            <label>Enter number</label>
+            <input type="number" id="inp">
+
+        </div>
+        <!-- <button type="submit" id="btn">get sum</button> -->
+        <div class="result">
+            <p>Sum = <span id="result"></span></p>
+        </div>
+    </div>
+
+
+    <script>
+        var btn = document.getElementById("btn");
+
+        var Nm = document.getElementById("inp");
+       
+
+        Nm.onkeyup=function(){
+            var res = document.getElementById("result");
+            var num = document.getElementById("inp").value;
+            var sum = 0;
+            for(var i = 0; i<=num;i++){
+                sum +=i;
+            }
+
+            res.innerHTML=sum;
+        }
+
+    </script>
+</body>
+</html>
