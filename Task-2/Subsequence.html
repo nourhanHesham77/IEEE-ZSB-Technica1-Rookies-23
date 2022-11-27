@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="gota">
+    <button id="btn">Subsequence?</button>
+
+    <script>
+
+var btn = document.getElementById("btn");
+btn.addEventListener("click",() => {
+    function checkforSubsequence(S, target)
+{
+ 
+    // Declare a stack
+    var s = [];
+ 
+    // Push the characters of
+    // target into the stack
+    for (var i = 0; i < target.length; i++) {
+        s.push(target[i]);
+    }
+ 
+    // Traverse the string S in reverse
+    for (var i = S.length - 1; i >= 0; i--) {
+ 
+        // If the stack is empty
+        if (s.length==0) {
+ 
+            document.write( "Yes");
+            return;
+        }
+ 
+        // if S[i] is same as the
+        // top of the stack
+        if (S[i] == s[s.length-1]) {
+ 
+
+            s.pop();
+        }
+    }
+ 
+    // Stack s is empty
+    if (s.length==0)
+        document.write( "Yes" );
+    else
+        document.write( "No" );
+}
+ 
+var S = document.getElementById("gota").value;
+var target = "hello";
+checkforSubsequence(S, target);
+
+})
+    </script>
+</body>
+</html>

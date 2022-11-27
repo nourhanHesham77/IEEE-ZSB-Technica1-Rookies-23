@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>enter a sorted list</label>
+    <input type="text" id="feng">
+    <button id="btn">get unique</button>
+    <div id="result"></div>
+
+    <script>
+//   var arr=[5,6,8,9,10,5,8,6,11];
+var btn = document.getElementById("btn");
+btn.addEventListener("click",() => {
+  var num=document.getElementById("feng").value;
+  var myArr = String(num).split(" ").map((num)=>{
+  return Number(num)
+})
+  let uniqueChars = [...new Set(myArr)];
+  var results = document.getElementById("result");
+
+results.innerHTML=uniqueChars;
+console.log(uniqueChars);
+
+})
+    </script>
+</body>
+</html>

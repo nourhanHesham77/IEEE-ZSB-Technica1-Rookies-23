@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #ben{
+            display: none;
+        }
+        input{
+            padding: 8px;
+            margin: 5px;
+        }
+        label,#ranoo{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+   <label>guess</label> 
+<input type="number" id="digi">
+<button id="sub">check</button>
+<div id="rano"></div>
+<div id="ranoo"></div>
+<button id="ben">play again</button>
+
+
+    <script>
+        //random num...you can see it in console
+var n = []; 
+function randomNum(min, max) { 
+
+for(var i=0;i<3;i++){ 
+n.push(Math.floor(Math.random() * max) + min); 
+} 
+return n; 
+}
+
+randomNum(0, 9);
+console.log(n);
+
+var btn= document.getElementById("sub");
+   
+//check 
+   btn.addEventListener("click",() => {
+var num= document.getElementById("digi").value;
+
+
+var myArr = String(num).split("").map((num)=>{
+  return Number(num)
+})
+ 
+var hit=0;
+var miss=0;
+for(var i=0;i<myArr.length;i++){
+    for(var j=0;j<n.length;j++){
+        if(myArr[i]===n[j]&&i==j){
+   hit+=1;
+}else if(myArr[i]===n[j]&&i!=j){
+   miss+=1;
+}
+    }
+    document.getElementById("ranoo").innerHTML=hit+"hits,"+miss+"miss";
+    if(hit===3){
+        document.getElementById("ranoo").innerHTML="ur guess is right..well done!!";
+        document.getElementById("ben").style.display="block";
+        document.getElementById("digi").disabled = true;
+    }
+  
+}
+
+
+   })
+
+   //reset
+
+   var btnr= document.getElementById("ben");
+   
+   btnr.addEventListener("click",() => {
+        window.location.reload(true);
+      
+   })
+
+
+   
+
+
+    </script>
+</body>
+</html>
