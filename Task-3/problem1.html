@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .conta{
+            margin: 10px;
+        }
+        .conta label{
+            display: block;
+            margin: 5px;
+        }
+        .conta textarea{
+            padding:10px;
+        }
+        
+        #result{
+            margin:8px ;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="conta">
+        <label>no. of rows & columns</label>
+        <input type="number" id="num">
+    </div>
+
+<div class="conta">
+    <label>values</label>
+    <textarea id="no"></textarea>
+</div>
+    <button id="btn">get result</button>
+    <div id="result"></div>
+
+
+    <script>
+        var btn = document.getElementById("btn");
+
+        btn.onclick=function(){
+            var v=document.getElementById("no").value;
+            var txtArray=v.split('\n');
+            var z=[];
+for(var i=0;i<txtArray.length;i++){
+    var x=txtArray[i];
+    var myArr1 = String(x).split(" ").map((x)=>{
+   return Number(x);
+ })
+
+  z.push(myArr1);
+
+
+}
+console.log(z)
+
+            var num =document.getElementById("num").value;
+
+            var result=document.getElementById("result");
+
+
+            function differ(dia, n)
+{
+    let principal = 0, secondary = 0;
+    for (let i = 0; i < n; i++) {
+        for (let j = 0; j < n; j++) {
+ 
+          
+            if (i == j)
+                principal += dia[i][j];
+ 
+           
+            if ((i + j) == (n - 1))
+                secondary += dia[i][j];
+        }
+    }
+ 
+    var res = Math.abs(principal-secondary);
+   result.innerHTML="output :"+res;
+}
+
+   
+        differ(z,num);
+        }
+       
+    </script>
+</body>
+</html>

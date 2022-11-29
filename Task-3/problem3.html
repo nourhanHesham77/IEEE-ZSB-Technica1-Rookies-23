@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input,textarea{
+            display: block;
+            margin: 9px;
+            padding: 7px;
+        }
+    </style>
+</head>
+<body>
+    <input type="number" id="num" placeholder="number of bottles">
+    <textarea id="no"></textarea>
+    <button id="btn">check</button>
+    <div id="result"></div>
+
+    <script>
+        var btn = document.getElementById("btn");
+
+btn.onclick=function(){
+
+    var num =document.getElementById("num").value;
+
+var result=document.getElementById("result");
+    var v=document.getElementById("no").value;
+
+    var txtArray=v.split('\n');
+            var z=[];
+for(var i=0;i<txtArray.length;i++){
+    var x=txtArray[i];
+    var myArr1 = String(x).split(" ").map((x)=>{
+   return Number(x);
+ })
+ z.push(myArr1);
+}
+
+var sum=[];
+var sum0=0;
+var sum1=0;
+var sum2=0;
+
+for(var i = 0; i < z.length; i++){
+    for(var j=0;j<2;j++){
+       
+    if(i!=j+1&&num!=2){
+    sum2=Number(z[i][1])+Number(z[j+1][1]);
+   sum.push(sum2);
+   var uniq=[...new Set(sum)];
+    }
+    }
+    sum0+=z[i][0];
+    sum1+=z[i][1];
+    if (num==2){
+    uniq=sum1;
+    if(sum0<=uniq){
+        result.innerHTML="yes";
+    }else{
+        result.innerHTML="no";
+    }
+    }
+
+}
+console.log(sum0);
+// console.log(sum1);
+console.log(uniq);
+
+
+for(var k=0;k<uniq.length;k++){
+    if(sum0<=uniq[k]){
+        result.innerHTML="yes";
+    }else{
+        result.innerHTML="no";
+    }
+
+  
+
+}
+
+
+}
+
+
+    </script>
+</body>
+</html>

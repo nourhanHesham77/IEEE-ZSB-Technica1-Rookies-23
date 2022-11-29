@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input,button{
+            display: block;
+            margin: 10px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <input type="number" id="num" placeholder="number of pages">
+    <input type="number" id="no" placeholder="the page to turn to">
+    <button id="btn">get</button>
+    <div id="result"></div>
+    
+
+    <script>
+
+
+var btn = document.getElementById("btn");
+
+btn.onclick=function(){
+
+   
+    var page=document.getElementById("no").value;
+   
+
+    var num =document.getElementById("num").value;
+
+    var result=document.getElementById("result");
+
+
+
+
+        function turn(n, k)
+{
+    if (n % 2 == 0)
+        n++;
+   
+    let x = Math.min((k + 1) / 2, (n - k + 1) / 2);
+    return Math.floor(x);
+}
+      
+
+var z=turn(num,page);
+      result.innerHTML="minimum no. of turns = "+z;
+
+        }
+    </script>
+</body>
+</html>

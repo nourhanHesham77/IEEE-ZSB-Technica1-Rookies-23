@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input,button{
+            display: block;
+            margin: 8px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="n1">
+    <input type="text" id="n2">
+    <button id="btn">get max</button>
+    <div id="result"></div>
+
+
+    <script>
+        
+        var btn = document.getElementById("btn");
+
+btn.onclick=function(){
+
+    var num=document.getElementById("n1").value;
+    var space =document.getElementById("n2").value;
+    var result=document.getElementById("result");
+
+    var myArr1 = String(num).split(" ").map((num)=>{
+   return Number(num);
+ })
+    var myArr2 = String(space).split(" ").map((space)=>{
+   return Number(space);
+ })
+
+ var n = myArr1[0];
+var distance;
+var m =myArr1[1];
+
+let all=[];
+if(n==m){
+    distance=0;
+}
+let max = 0;
+ for(var i=0;i<n;i++){
+
+    for(var j=0;j<m;j++){
+ 
+        let value = +Math.ceil((myArr2[i + 1] - myArr2[i] - 1) / 2.0);
+    value > max && (max = value);
+    }  
+        
+    
+ }
+
+ myArr2[0] > max && (max = myArr2[0] - 0);
+
+  n - 1 - myArr2[m - 1] > max && (max = n - 1 - myArr2[m - 1]);
+
+
+ result.innerHTML="max distance = "+max;
+}
+    </script>
+</body>
+</html>
