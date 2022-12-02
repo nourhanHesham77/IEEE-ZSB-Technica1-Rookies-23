@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100%;
+            padding: 0;
+        }
+
+        body .container{
+            width: 60%;
+            height: 60%;
+            margin-top: 20%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .container .inp{
+            display: inline-flex;
+            justify-content: space-between;
+            margin: 5px;
+            position: relative;
+            text-align: center;
+        }
+       
+        .inp input{
+        width: 100%;
+        padding: 0 5px;
+        height: 40px;
+        font-size: 16px;
+        border: none;
+        background: none;
+        outline: none;
+    }
+
+    .inp label{
+     position: absolute;
+     top: 50%;
+     left: 5px;
+     color: #adadad;
+     transform: translateY(-50%);
+     font-size: 16px;
+     pointer-events: none;
+     transition: .5s;
+    }
+    .inp input:focus ~ label,
+    .inp input:valid ~ label{
+        top: -5px;
+        color: #0c68a5;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="inp">
+<input type="text" required id="vfirst" >
+<label>Enter 1st name</label>
+        </div>
+        <div class="inp">
+<input type="text" required id="vsecond" >
+<label>Enter 2nd name</label>
+        </div>
+
+        <button id="btn">check</button>
+
+        <div id="result"></div>
+    </div>
+
+
+    <script>
+         var btn = document.getElementById("btn");
+
+btn.onclick=function(){
+
+    var v1 =document.getElementById("vfirst").value;
+    var v2=document.getElementById("vsecond").value;
+var result=document.getElementById("result");
+   
+
+var s1 = String(v1).split("");
+
+// console.log(v1.length);
+
+
+let findPermutations = (string) => {
+  if (typeof string !== "string"){
+    return "Please enter a string"
+  } else if (string.length < 2 ){
+    return string
+  }
+
+  let permutationsArray = [] 
+   
+  for (let i = 0; i < string.length; i++){
+    let char = string[i]
+
+    let remainingChars = string.slice(0, i) + string.slice(i + 1, string.length)
+
+    for (let permutation of findPermutations(remainingChars)){
+      permutationsArray.push(char + permutation) }
+  }
+  return permutationsArray
+}
+
+
+var ser=findPermutations(v1);
+console.log(ser);
+var count;
+for(i=0;i<ser.length;i++){
+    if(v2.includes(ser[i])||v2.includes(v1)){
+        
+         count=1;
+    }else{
+        count=0;
+    }
+}
+if(count==0){
+    result.innerHTML="false";
+}else{
+    result.innerHTML="true";
+}
+}
+
+
+    </script>
+</body>
+</html>

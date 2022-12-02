@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body{
+            width: 100%;
+            height: 100%;
+            padding: 0;
+        }
+
+        body .container{
+            width: 60%;
+            height: 60%;
+            margin-top: 20%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .container .inp{
+            display: inline-flex;
+            justify-content: space-between;
+            margin: 5px;
+            position: relative;
+            text-align: center;
+        }
+       
+        .inp input{
+        width: 100%;
+        padding: 0 5px;
+        height: 40px;
+        font-size: 16px;
+        border: none;
+        background: none;
+        outline: none;
+    }
+
+    .inp label{
+     position: absolute;
+     top: 50%;
+     left: 5px;
+     color: #adadad;
+     transform: translateY(-50%);
+     font-size: 16px;
+     pointer-events: none;
+     transition: .5s;
+    }
+    .inp input:focus ~ label,
+    .inp input:valid ~ label{
+        top: -5px;
+        color: #2691d9;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="inp">
+<input type="text" required id="n1" >
+<label>Enter n & k</label>
+        </div>
+        <div class="inp">
+<input type="text" required id="n2" >
+<label>Enter array</label>
+        </div>
+
+        <button id="btn">frequent</button>
+
+        <div id="result"></div>
+    </div>
+
+
+
+    <script>
+        var btn = document.getElementById("btn");
+
+btn.onclick=function(){
+
+   
+    var num1=document.getElementById("n1").value;
+    var num2 =document.getElementById("n2").value;
+    var result=document.getElementById("result");
+
+    var myArr1 = String(num1).split(" ").map((num1)=>{
+   return Number(num1);
+ })
+ var n= myArr1[0];
+ var k= myArr1[1];
+
+    var arr = String(num2).split(" ").map((num2)=>{
+   return Number(num2);
+ })
+
+ var elementCount = new Map();
+     
+     for(let i=0;i<n;i++){
+         if(elementCount.has(arr[i])){
+            //if operates when the num is repeated..& temp=lastcount..
+             var temp = elementCount.get(arr[i]);
+             //increament the count..
+             elementCount.set(arr[i], temp+1); 
+         }
+         else{
+             elementCount.set(arr[i], 1);
+         }
+     }
+     console.log(elementCount);
+var narr=[];
+     for(i=0;i<n;i++){
+        if(elementCount.get(arr[i])!=1){
+             narr.push(arr[i]);
+             
+        }
+     }
+     let uniqueChars = [...new Set(narr)];
+     console.log(uniqueChars);
+
+     var out = uniqueChars.join("  ");
+     result.innerHTML="most frequent elements = "+out;
+
+
+     // if order is required.........................
+
+//      var freq = new Array(n+1);
+//      for(let i=0;i<=n;i++){
+//         freq[i] = new Array();
+//     }    
+//      for (const [key, value] of elementCount.entries()) {
+//         freq[value].push(key);
+//     }
+// var count=0;
+//     for(let i=n;i>=0;i--){
+//         for(var j=freq[i].length-1;j>=0;j--){
+//             count++;
+//             console.log(freq[i][j] + " ");
+//             result.innerHTML=freq[i][j] + " ";
+//         }
+//         if(count==k){
+//             return;
+//         }
+//     }
+//     return;
+
+}
+    </script>
+</body>
+</html>

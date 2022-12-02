@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea,input{
+            display: block;
+            padding: 10px;
+            margin: 10px;
+        }
+        textarea{
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <input type="number" id="num">
+    <textarea id="analo"></textarea>
+    <button id="btn">get</button>
+    <div id="result"></div>
+
+
+    <script>
+           var btn = document.getElementById("btn");
+
+btn.onclick=function(){
+
+   
+    var num=document.getElementById("num").value;
+    var anagram =document.getElementById("analo").value;
+    var result=document.getElementById("result");
+    var txtArray=anagram.split('\n');
+            var z=[];
+            console.log(txtArray[0]);
+        function groupAnagrams(strs) {
+  let result = {};
+for (let word of strs) {
+    let cleansed = word.split("").sort().join("");
+    if (result[cleansed]) {
+      result[cleansed].push(word);
+    } else {
+      result[cleansed] = [word];
+    }
+  }
+return Object.values(result);
+}
+
+z= groupAnagrams(txtArray);
+console.log(z);
+let arr=z[0]+"<br>";
+for(var i=1;i<z.length;i++){
+arr += z[i] + "<br>";
+}
+result.innerHTML=arr;
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            padding: 10px;
+            margin: 7px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <input type="number" id="num">
+    <input type="text" id="nm">
+    <button id="btn">get</button>
+    <div id="result"></div>
+
+
+
+
+
+
+    <script>
+         var btn = document.getElementById("btn");
+
+btn.onclick=function(){
+
+   
+    var num1=document.getElementById("nm").value;
+    var num =document.getElementById("num").value;
+    var result=document.getElementById("result");
+
+    var myArr1 = String(num1).split(" ").map((num1)=>{
+   return Number(num1);
+ })
+var gtnum = myArr1.join("");
+ var re = Number(gtnum) + 1;
+var fnt= String(re).split("").join(" ");
+ result.innerHTML="new array = "+fnt;
+
+
+}
+    </script>
+</body>
+</html>

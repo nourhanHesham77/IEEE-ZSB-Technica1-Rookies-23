@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            padding: 7px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <input type="number" id="num" placeholder="enter number">
+    <button id="btn">get</button>
+    <div id="result"></div>
+
+    <script>
+        var btn = document.getElementById("btn");
+
+btn.onclick=function(){
+
+    var num =document.getElementById("num").value;
+
+    var result=document.getElementById("result");
+
+    var myArr = String(num).split("").map((num)=>{
+  return Number(num)
+})
+
+// console.log(myArr);
+
+myArr.sort();
+    var asc = 0;
+    for (i=0; i<4; i++)
+    asc = asc*10 + myArr[i];
+
+    console.log(asc);
+
+
+    myArr.sort();
+    var desc = 0;
+    for (i=3; i>=0; i--)
+    desc = desc*10 + myArr[i];
+
+    console.log(desc);
+    if(num==6174){
+        var count=0;
+    }else{
+     var count=1;
+    }
+    var diff = Math.abs(asc - desc);
+
+    while(diff!=6174){
+    
+     var arr = String(diff).split("").map((diff)=>{
+  return Number(diff);
+})
+if(arr.length!=4){
+    arr.push(0);
+}
+asc=arr.sort().join("");
+desc=arr.sort().reverse().join("");
+diff = Math.abs(asc - desc);
+count+=1;
+
+    }
+
+    console.log(count);
+    result.innerHTML="Output = "+count;
+
+}
+    </script>
+</body>
+</html>

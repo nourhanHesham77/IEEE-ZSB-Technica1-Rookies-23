@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            padding: 15px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="enter separated numbers" id="num">
+    <button id="btn">min</button>
+   <div id="result"></div>
+
+
+    <script>
+        var btn = document.getElementById("btn");
+
+btn.onclick=function(){
+
+    var num =document.getElementById("num").value;
+
+    var result=document.getElementById("result");
+
+    var arr = String(num).split(" ").map((num)=>{
+   return Number(num);
+ })
+
+   var distance;
+   var d=[];
+    for(var i=0;i<arr.length;i++){
+        for(var j=i+1;j<arr.length;j++){
+                if(arr[i]==arr[j]&&i!=j){
+                 distance=Math.abs(i-j);
+                 d.push(distance);
+                }
+        }
+      
+    }
+    console.log(d);
+    var mini=Math.min(...d);
+    result.innerHTML="min distance = "+mini;
+}
+    </script>
+</body>
+</html>

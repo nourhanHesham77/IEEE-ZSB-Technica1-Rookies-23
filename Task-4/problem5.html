@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea,input{
+            display: block;
+            padding: 11px;
+            margin: 5px;
+        }
+        textarea{
+            height: 45px;
+            
+        }
+    </style>
+</head>
+<body>
+    <input type="number" id="num" placeholder="enter N">
+    <textarea id="no"></textarea>
+    <button id="btn">get</button>
+
+<script>
+    var btn = document.getElementById("btn");
+
+btn.onclick=function(){
+    var num =document.getElementById("num").value;
+    var v=document.getElementById("no").value;
+
+var txtArray=v.split('\n');
+        var a=[];
+for(var i=0;i<txtArray.length;i++){
+var x=txtArray[i];
+var myArr1 = String(x).split(" ").map((x)=>{
+return Number(x);
+})
+a.push(myArr1);
+}
+
+console.log(a.length);
+
+for (i = 0; i < parseInt(num / 2); i++) {
+            for (j = i; j < num - i - 1; j++) {
+ 
+               
+                var temp = a[i][j];
+                a[i][j] = a[num - 1 - j][i];
+                a[num - 1 - j][i] = a[num - 1 - i][num - 1 - j];
+                a[num - 1 - i][num - 1 - j] = a[j][num - 1 - i];
+                a[j][num - 1 - i] = temp;
+            }
+        }
+
+    console.log(a);
+
+     for (i = 0; i < num; i++) {
+            for (j = 0; j < num; j++)
+                document.write(a[i][j] + " ");
+            document.write("<br/>");
+          
+        }
+         
+}
+</script>
+</body>
+</html>
