@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="num">
+    <button id="btn">get all prime</button>
+    <div id="result"></div>
+
+
+
+    <script>
+                var btn = document.getElementById("btn");
+
+btn.onclick=function(){
+
+    var numb =document.getElementById("num").value;
+var result=document.getElementById("result");
+//2n+1,2n-1
+function pme_factors(num) {
+  function check_pme(num) {
+    for (var i = 2; i <= Math.sqrt(num); i++)
+    {
+      if (num % i === 0) return false;
+    }
+    return true;
+  }
+  var result = [];
+  for (let i = 2; i <= num; i++)
+  {
+    while (check_pme(i) && num % i === 0) 
+    {
+    // if we want distinct........>>>  if (!result.includes(i)) 
+      result.push(i);
+      num /= i;
+    }
+  }
+  return result;
+}
+var pme=pme_factors(numb);
+result.innerHTML=pme;
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100%;
+            padding: 0;
+        }
+
+        body .container{
+            width: 60%;
+            height: 60%;
+            margin-top: 20%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .container .inp{
+            display: inline-flex;
+            justify-content: space-between;
+            margin: 5px;
+            position: relative;
+            text-align: center;
+        }
+       
+        .inp input{
+        width: 100%;
+        padding: 0 5px;
+        height: 40px;
+        font-size: 16px;
+        border: none;
+        background: none;
+        outline: none;
+    }
+
+    .inp label{
+     position: absolute;
+     top: 50%;
+     left: 5px;
+     color: #adadad;
+     transform: translateY(-50%);
+     font-size: 16px;
+     pointer-events: none;
+     transition: .5s;
+    }
+    .inp input:focus ~ label,
+    .inp input:valid ~ label{
+        top: -5px;
+        color: #0c68a5;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="inp">
+<input type="text" required id="vfirst" >
+<label>Enter set of numbers</label>
+        </div>
+        <button id="btn">get</button>
+        <div id="result"></div>
+        </div>
+
+
+        <script>
+              var btn = document.getElementById("btn");
+
+btn.onclick=function(){
+
+    var v =document.getElementById("vfirst").value;
+var result=document.getElementById("result");
+
+var myArr = String(v).split(" ").map((v)=>{
+  return Number(v)
+})
+
+
+    function heaping(arr, n, i)
+{
+
+    var largest = i;
+    //get left...
+    var l = 2*i+1;
+    //get right...
+    var r = 2*i+2;
+
+    //start comparing to sort the array.....
+
+    if (l < n && myArr[l] > myArr[largest])
+        largest = l;
+
+    if (r < n && myArr[r] > myArr[largest])
+        largest = r;
+
+        //rearranging.......
+    if (largest != i) {
+        var temp = myArr[i];
+        myArr[i] = myArr[largest];
+        myArr[largest] = temp;    
+        heaping(arr, n, largest);
+}
+
+}
+
+function getHeap(arr)
+{
+   //get last non-leaf node index=(n/2)-1....
+var n = myArr.length;
+var lastNode = Math.floor(n/2)-1;
+
+    for (var i = lastNode; i >= 0; i--)
+        heaping(arr, n, i);
+}
+// console.log(myArr);
+getHeap(myArr);
+result.innerHTML="max-heap = "+myArr;
+}
+        </script>
+</body>
+</html>

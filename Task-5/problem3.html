@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #result{
+            font-size: 25px;
+            margin:6px ;
+        }
+        input{
+            padding:5px ;
+        }
+    </style>
+</head>
+<body>
+    <input type="number" id="num">
+    <button id="btn">check for Zarzor</button>
+    <div id="result"></div>
+
+
+    <script>
+           var btn = document.getElementById("btn");
+
+btn.onclick=function(){
+
+    var v =document.getElementById("num").value;
+var result=document.getElementById("result");
+
+var sum=0;
+do {
+   var arr = String(v).split("").map((v)=>{
+  return Number(v)
+})
+sum=0;
+for(var i=0;i<arr.length;i++){
+    sum+=Math.pow(arr[i],2);
+}
+var v=sum;
+}while(v!=1&&v>=10)
+console.log(v);
+if(v==1){
+    result.innerHTML="true...he wins";
+    result.style.color="green";
+}else{
+    result.innerHTML="false...Oops,he dies";
+    result.style.color="red";
+}
+
+}
+    </script>
+</body>
+</html>
