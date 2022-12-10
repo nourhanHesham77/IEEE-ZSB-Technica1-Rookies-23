@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            display: block;
+            margin: 5px;
+            padding: 7px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="v1" >
+    <input type="text" id="v2" >
+    <input type="text" id="v3" >
+    <input type="text" id="v4" >
+    <button id="btn">get</button>
+    <div id="result"></div>
+
+
+    <script>
+              var btn = document.getElementById("btn");
+
+btn.onclick=function(){
+    
+    var n1 = document.getElementById("v1").value;
+    var x = document.getElementById("v2").value;
+    var n3 = document.getElementById("v3").value;
+    var y = document.getElementById("v4").value;
+
+    var myArr1 = String(x).split(" ").map((x)=>{
+return Number(x);
+}) 
+    var myArr2 = String(y).split(" ").map((y)=>{
+return Number(y);
+}) 
+
+console.log(myArr1);
+console.log(myArr2);
+   
+var result=document.getElementById("result");
+
+function climbingLeaderboard(ranked,player){
+    // nranked = Array.from(new Set(ranked));
+    var nranked = [...new Set(ranked)];
+ var ranks=[];
+    for(var i=0;i<player.length;i++){
+        // for(var j=0;j<nranked.length;j++){
+            while(player[i]>=nranked[nranked.length-1]){
+                //if player score is higher than last p. we remove last p. .......
+                nranked.pop();
+            }
+             // then we add the player rank into an array...and update it each game &(+1)as the player is not in the ranked list itself..
+            ranks.push(nranked.length + 1)
+           
+        // }
+    }
+    return ranks;
+}
+
+var res = climbingLeaderboard(myArr1, myArr2);
+result.innerHTML=res.join("  ");
+
+}
+    </script>
+</body>
+</html>

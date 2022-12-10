@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <textarea id="num"></textarea>
+    <button id="btn">get</button>
+
+    <script>
+        var btn=document.getElementById("btn");
+        btn.onclick=function(){
+            var inp=document.getElementById("num").value;
+            function removeFriends(input){
+   
+   var txtArray=input.split('\n');
+       var arr=[];
+for(var i=1;i<txtArray.length;i++){
+var x=txtArray[i];
+var myArr1 = String(x).split(" ").map((x)=>{
+return Number(x);
+})
+arr.push(myArr1);
+}
+
+   for(var k=0;k<arr.length;k+=2){
+    var num=arr[k][1];
+    var elminated=[];
+   while(elminated.length<num){
+     for(var i=0;i<arr[k+1].length;i++){
+       while(arr[k+1][i]<arr[k+1][i+1]){
+          var deleted= arr[k+1].splice(i, 1);
+          elminated.push(Number(deleted));
+       }
+     }
+   }
+     console.log(arr[k+1].join(" "));
+
+}
+
+
+}
+ 
+removeFriends(inp);
+        }
+
+
+
+        class BinarySearchTree
+{
+    constructor()
+    {
+        // root of a binary search tree
+        this.root = null;
+    }
+
+    insert(data)
+{
+   
+    var newNode = new Node(data);
+                     
+   
+    if(this.root === null)
+        this.root = newNode;
+    else
+ 
+        
+        this.insertNode(this.root, newNode);
+}
+ 
+
+insertNode(node, newNode)
+{
+    if(newNode.data < node.data)
+    {
+        if(node.left === null)
+            node.left = newNode;
+        else
+ 
+            this.insertNode(node.left, newNode);
+    }
+ 
+    else
+    {
+       
+        if(node.right === null)
+            node.right = newNode;
+        else
+ 
+            this.insertNode(node.right,newNode);
+    }
+}
+}
+
+var numSquares = function (n) {
+  
+  let squareNums = [];
+ 
+  let count = [0];
+
+  
+  let nextSquare = 1;
+  while (count.length < n + 1) {
+    if (count.length === nextSquare) {
+     
+      squareNums.push(nextSquare);
+      nextSquare = (squareNums.length + 1) ** 2;
+      count.push(1);
+    } else {
+      count.push(
+        Math.min(...squareNums.map((s) => count[count.length - s])) + 1
+      );
+    }
+  }
+  return count[n];
+};
+    </script>
+</body>
+</html>

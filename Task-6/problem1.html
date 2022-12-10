@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 800px;
+            margin: auto;
+            padding: 10px;
+            justify-content: center;
+        }
+
+        .container input,textarea{
+            display: block;
+            margin: 5px;
+            padding: 5px;
+        }
+
+        .container #result{
+            font-size: large;
+            margin:7px ;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+    <input type="number" id="n">
+   <textarea id="num"></textarea>
+    <button id="btn">get</button>
+    <div id="result"></div>
+</div>
+
+    <script>
+             var btn = document.getElementById("btn");
+
+btn.onclick=function(){
+    
+    var t = document.getElementById("n").value;
+    var v =document.getElementById("num").value;
+var result=document.getElementById("result");
+
+
+var txtArray=v.split('\n');
+function findDigits(n) {
+
+console.log(n);
+let alldivisors=[];
+    for(var j=0;j<n.length;j++){
+    var x=n[j];
+    var rel=Number(x);
+var myArr1 = String(x).split("").map((x)=>{
+return Number(x);
+})  
+  let divisors = []; 
+  for(let i = 0; i < myArr1.length; i++){
+    let num = myArr1[i]*1;
+    
+    if(rel % num == 0){
+      divisors.push(num)
+    }
+  }
+  var led=divisors.length;
+  console.log(led);
+  alldivisors.push(led);
+}
+
+  console.log(alldivisors);
+  var divresult = alldivisors.join("<br>");
+  return divresult;
+
+}
+
+
+if(txtArray.length!=t){
+    alert("please enter "+t+" numbers");
+}else{
+var b=findDigits(txtArray);
+result.innerHTML= "Output : <br>"+b;
+}
+console.log(b);
+
+
+}
+    </script>
+</body>
+</html>
